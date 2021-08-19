@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Marek Barak"
+      user-mail-address "mrk.barak@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-dracula)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -54,4 +54,37 @@
 ;; they are implemented.
 
 (setq ns-alternate-modifier 'none)
+(setq projectile-project-search-path '("~/projects/work/"))
 
+(after! lsp-ui
+  (setq lsp-ui-doc-enable t))
+
+;;(after! org
+;;  (map! :map org-mode-map
+;;        :n "M-j" #'org-metadown
+;;        :n "M-k" #'org-metaup)
+;;  )
+;;
+(use-package org-super-agenda
+  :after org-agenda
+  :init
+  (setq org-super-agenda-groups '((:name "Today"
+                                   :time-grid t
+                                   :scheduled today)
+                                  (:name "Due today"
+                                   :deadline today)
+                                  (:name "Important"
+                                   :priority "A")
+                                  (:name "Overdue"
+                                   :deadline past)
+                                  (:name "Due soon"
+                                   :deadline future)
+                                  (:name "Big Outcomes"
+                                   :tag "bo")))
+  :config
+  (org-super-agenda-mode)
+)
+
+(require 'org)
+(setq org-show-notification-timeout 'message)
+(setq org-clock-sound "~/sounds/klaxon.wav")
