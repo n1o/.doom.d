@@ -86,5 +86,12 @@
 )
 
 (require 'org)
-(setq org-show-notification-timeout 'message)
 (setq org-clock-sound "~/sounds/klaxon.wav")
+
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+
+(setq org-roam-directory "~/my-org-roam-notes")
+(setq org-tag-alist '(("causality" . ?c) ("compilers" . ?i)))
