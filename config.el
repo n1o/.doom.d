@@ -93,5 +93,12 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 
+(setq org-roam-capture-templates
+      '(("d" "default" plain
+         "%?"
+         :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+                            "#+title: ${title}\n#+STARTUP: latexpreview\n#+STARTUP: inlineimages")
+         :unnarrowed t)))
+
 (setq org-roam-directory "~/my-org-roam-notes")
 (setq org-tag-alist '(("causality" . ?c) ("compilers" . ?i)))
