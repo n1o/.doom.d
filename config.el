@@ -101,4 +101,16 @@
 
 
 (setq org-roam-directory "~/my-org-roam-notes")
+(setq org-noter-notes-search-path '("~/my-org-roam-notes/"))
+(setq org-attach-id-dir "~/my-org-roam-notes/attachments/")
+
 (setq org-tag-alist '(("causality" . ?c) ("compilers" . ?i)))
+
+(use-package lsp-python-ms
+	     :ensure t 
+	     :hook (python-mode . (lambda ()
+				    (require 'lsp-python-ms)
+				    (lsp)))
+	     :init
+	     (setq lsp-python-ms-executable (executable-find "python-language-server")))
+
