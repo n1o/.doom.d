@@ -101,8 +101,17 @@
 
 
 (setq org-roam-directory "~/my-org-roam-notes")
-(setq org-noter-notes-search-path '("~/my-org-roam-notes/"))
+(setq! org-noter-notes-search-path '("~/my-org-roam-notes/"))
+;; (setq! bibtex-completion-bibliography '("~/my-org-roam-notes/reference/references.bib"))
+(setq! citar-bibliography '("~/my-org-roam-notes/reference/references.bib"))
 (setq org-attach-id-dir "~/my-org-roam-notes/attachments/")
+(setq org-journal-dir "~/my-journal")
+
+;;(setq! bibtex-completion-library-path '("~/my-org-roam-notes/papers/")
+;;       bibtex-completion-notes-path "~/my-org-roam-notes/")
+
+(setq! citar-library-paths '("~/my-org-roam-notes/papers/")
+       citar-notes-paths '("~/my-org-roam-notes/"))
 
 (setq org-tag-alist '(("causality" . ?c) ("compilers" . ?i)))
 
@@ -112,5 +121,18 @@
 				    (require 'lsp-python-ms)
 				    (lsp)))
 	     :init
-	     (setq lsp-python-ms-executable (executable-find "python-language-server")))
+	     (setq lsp-python-ms-executable (executable-find "pylsp")))
 
+
+;;(use-package! org-roam-bibtex
+;;  :after org-roam
+;;  :config
+;;  ) ;
+
+(setq org-roam-dailies-directory "daily/")
+(setq org-roam-dailies-capture-templates
+      '(("d" "default" entry
+         "* %?"
+         :target (file+head "%<%Y-%m-%d>.org.gpg"
+                            "#+title: %<%Y-%m-%d>\n"))))
+(setq org-agenda-files '("~/Dropbox/org"))

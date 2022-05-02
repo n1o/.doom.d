@@ -52,3 +52,10 @@
 
 (package! org-super-agenda)
 
+;; (use-package org-roam-bibtex :after org-roam :config (require 'org-ref))
+
+;; When using org-roam via the `+roam` flag
+(unpin! org-roam)
+
+;; When using bibtex-completion via the `biblio` module
+;; (unpin! bibtex-completion helm-bibtex ivy-bibtex)
